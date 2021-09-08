@@ -1,7 +1,6 @@
 import random
 
 from selenium.webdriver.common.by import By
-from app.selenium_ui.jira import pages
 
 from selenium_ui.base_page import BasePage
 from selenium_ui.conftest import print_timing
