@@ -1,6 +1,7 @@
 import random
 
 from selenium.webdriver.common.by import By
+from app.selenium_ui.jira import pages
 
 from selenium_ui.base_page import BasePage
 from selenium_ui.conftest import print_timing
@@ -36,7 +37,9 @@ def app_specific_action(webdriver, datasets):
     def measure():
         @print_timing("selenium_app_custom_action:go_to_udc_plugin_report")
         def sub_measure():
+            login_page = Login(webdriver)
             page.go_to_url(f"{JIRA_SETTINGS.server_url}/plugins/servlet/secureconnectivity")
+            login_page.second_login()
             # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelList--body']"))
             # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelClientApp']"))
             page.wait_until_visible((By.ID, "tunnel-client-react-container"))

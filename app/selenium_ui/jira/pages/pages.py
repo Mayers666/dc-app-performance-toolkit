@@ -25,6 +25,10 @@ class Login(BasePage):
     def is_first_login_second_page(self):
         return True if self.get_elements(LoginPageLocators.avatar_page_next_button) else False
 
+    def second_login(self):
+        self.wait_until_visible(LoginPageLocators.password_field2).send_keys("admin")
+        self.get_element(LoginPageLocators.login_submit_button).click()
+
     def first_login_setup(self):
         self.wait_until_visible(LoginPageLocators.continue_button).send_keys(Keys.ESCAPE)
         self.get_element(LoginPageLocators.continue_button).click()

@@ -75,6 +75,7 @@ class LoginPageLocators:
     explore_current_projects = (By.CSS_SELECTOR, "a[data-step-key='browseprojects']")
     login_field = (By.ID, 'login-form-username')
     password_field = (By.ID, 'login-form-password')
+    password_field2 = (By.ID, 'login-form-authenticatePassword')
     login_submit_button = (By.ID, 'login-form-submit')
     system_dashboard = (By.ID, "dashboard")
     footer = (By.ID, 'footer-build-information')
