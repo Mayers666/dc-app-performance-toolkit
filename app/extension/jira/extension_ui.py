@@ -32,13 +32,14 @@ def app_specific_action(webdriver, datasets):
         app_specific_user_login(username='admin', password='admin')
     measure()
 
-    @print_timing("selenium_app_custom_action:go_to_secure_connectivity_page")
-    def sub_measure():
-        page.go_to_url(f"{JIRA_SETTINGS.server_url}/plugins/servlet/secureconnectivity")
-        # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelList--body']"))
-        # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelClientApp']"))
-        page.wait_until_visible((By.ID, "tunnel-client-react-container"))
+    @print_timing("selenium_app_custom_action")
+    def measure():
+        @print_timing("selenium_app_custom_action:go_to_udc_plugin_report")
+        def sub_measure():
+            page.go_to_url(f"{JIRA_SETTINGS.server_url}/plugins/servlet/secureconnectivity")
+            # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelList--body']"))
+            # page.wait_until_visible((By.CSS_SELECTOR, "[data-testid='tunnelClientApp']"))
+            page.wait_until_visible((By.ID, "tunnel-client-react-container"))
         sub_measure()
     measure()
-
 
